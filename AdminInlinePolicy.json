@@ -1,0 +1,23 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sts:AssumeRole"
+      ],
+      "Resource": "arn:aws:iam::*:role/stacksets-exec-*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:*",
+        "s3:*",
+        "iam:PassRole",
+        "lambda:*",
+        "logs:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

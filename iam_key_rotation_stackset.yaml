@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  IAMKeyRotationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: IAMKeyRotationRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::626635400294:role/IAMRotateStackSetExecutionRole
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: IAMKeyRotationPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - iam:ListUsers
+                  - iam:ListAccessKeys
+                  - iam:UpdateAccessKey
+                  - iam:CreateAccessKey
+                  - iam:DeleteAccessKey
+                Resource: "*"

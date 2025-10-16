@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: StackSet template for IAM Key Rotation using an existing IAM execution role
+
+Parameters:
+  ExistingRoleArn:
+    Type: String
+    Description: ARN of an existing IAM Role for Lambda execution
+
+Resources:
+  IAMKeyRotationLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: IAMKeyRotationLambda
+      Handler: index.handler
+      Role: !Ref ExistingRoleArn
+      Runtime: python3.9
+      Timeout: 60
+      Description: Lambda to rotate IAM access keys older than 2 days
+      Code:
+        ZipFile: |
+          import boto3
+          import datetime
+
+          def handler(event, context):
+              iam = boto3.client('iam')
+              users = iam.list_users()['Users']
+              for user in users:
+                  keys = iam.list_access_keys(UserName=user['UserName'])['AccessKeyMetadata']
+                  for key in keys:
+                      create_date = key['CreateDate']
+                      age = (datetime.datetime.now(datetime.timezone.utc) - create_date).days
+                      if age > 2:
+                          print(f"Key {key['AccessKeyId']} for {user['UserName']} is older than 2 days")
+                          # Add rotation logic here if needed
+
+Outputs:
+  LambdaFunctionArn:
+    Description: ARN of the IAM Key Rotation Lambda
+    Value: !Ref IAMKeyRotationLambda

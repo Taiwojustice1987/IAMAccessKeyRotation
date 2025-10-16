@@ -1,0 +1,21 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "IAMAccessKeyRotationLambdaRole",
+        "RoleId": "AROAZDZTBMRTBZQKF6UMT",
+        "Arn": "arn:aws:iam::626635400294:role/IAMAccessKeyRotationLambdaRole",
+        "CreateDate": "2025-10-13T17:22:18+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "lambda.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        }
+    }
+}

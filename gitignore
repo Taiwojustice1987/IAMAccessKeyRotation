@@ -1,0 +1,49 @@
+# -----------------------------
+# Python cache and compiled files
+# -----------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+.venv/
+
+# -----------------------------
+# AWS / Lambda deployment
+# -----------------------------
+# AWS credentials and config
+.aws/
+*.pem
+*.key
+
+# Lambda deployment package
+function.zip
+
+# -----------------------------
+# IDE / Editor
+# -----------------------------
+# VSCode
+.vscode/
+# PyCharm
+.idea/
+*.iml
+
+# -----------------------------
+# OS-specific files
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Logs and temporary files
+# -----------------------------
+*.log
+*.tmp
+*.bak

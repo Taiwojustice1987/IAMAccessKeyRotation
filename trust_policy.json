@@ -1,0 +1,12 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::626635400294:role/IAMAccessKeyRotationLambdaRole"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
